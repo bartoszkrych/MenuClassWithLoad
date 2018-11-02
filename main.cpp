@@ -30,20 +30,22 @@ int main()
 
 	main->vRun();
 
-	system("cls");
-
-	delete main;
-
-	cout <<endl<<endl<< "Goodbye!" << endl<<endl;
-
 	system("pause");
 	*/
 
 	string s_test_m_sm_com = "('mMenu','main';('Subm','sub';['MyCom','comm','helpComm']),('subm2','sub2';))";
 
-	CMenuItem* main = start(s_test_m_sm_com);
+	if(bLoadString(s_test_m_sm_com))
+	{
+		CMenuItem* main = cCreateFromString(s_test_m_sm_com);
+		main->vRun();
 
-	main->vRun();
+		system("cls");
+
+		delete main;
+
+		cout << endl << endl << "Goodbye!" << endl << endl;
+	}
 
 	system("pause");
 	
