@@ -1,0 +1,1 @@
+('Main','main';('Submenu1','menu1';('Submenu1','menu11';),['Open browser','internet','This command can show you text.']),('Submenu2','menu2';['Test empty','empty',''],['Default name','defcom','']),['Write: "Ala has a cat"','ala','This command can show you text.'],('sub','sub3';))

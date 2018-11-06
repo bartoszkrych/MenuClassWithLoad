@@ -5,11 +5,11 @@
 class CMyMenu;
 using namespace std;
 
-void createChildren(std::string sString, int iCurrIdx, CMyMenu* cMother);
+void createChildren(std::string sString, int& iCurrIdx, CMyMenu* cMother);
 
-CMyMenu* createMenu(string sString, int iCurrIdx);
+CMyMenu* createMenu(string sString, int& iCurrIdx);
 
-CMenuCommand* createCommand(string sString, int iCurrIdx);
+CMenuCommand* createCommand(string sString, int& iCurrIdx);
 
 CMenuItem* cCreateFromString(string sString);
 

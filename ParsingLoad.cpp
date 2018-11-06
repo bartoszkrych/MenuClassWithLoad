@@ -15,8 +15,7 @@ using namespace std;
 #define COMMA ','
 #define SEMICOLON ';'
 
-
-CMyMenu* createMenu(string sString, int iCurrIdx)
+CMyMenu* createMenu(string sString, int& iCurrIdx)
 {
 	int i_end_name = sString.find(COMMA, iCurrIdx);
 	int i_end_command = sString.find(SEMICOLON, iCurrIdx);
@@ -26,16 +25,16 @@ CMyMenu* createMenu(string sString, int iCurrIdx)
 
 	CMyMenu* c_menu = new CMyMenu(s_name, s_comm);
 
-	int iAfterSelcom = sString.find(SEMICOLON, iCurrIdx);
-	iAfterSelcom++;
-	if (sString[iAfterSelcom] != MENU_END)
+	iCurrIdx = sString.find(SEMICOLON, iCurrIdx);
+	if (sString[iCurrIdx+1] != MENU_END)
 	{
-		createChildren(sString, iAfterSelcom, c_menu);
+		iCurrIdx++;
+		createChildren(sString, iCurrIdx, c_menu);
 	}
 	return c_menu;
 }
 
-CMenuCommand* createCommand(string sString, int iCurrIdx)
+CMenuCommand* createCommand(string sString, int& iCurrIdx)
 {
 	int i_end_name = sString.find(COMMA, iCurrIdx);
 	int i_end_command = sString.find(COMMA, i_end_name + 1);
@@ -49,11 +48,10 @@ CMenuCommand* createCommand(string sString, int iCurrIdx)
 	return c_command;
 }
 
-void createChildren(string sString, int iCurrIdx, CMyMenu* cMother)
+void createChildren(string sString, int& iCurrIdx, CMyMenu* cMother)
 {
-	iCurrIdx--;
 	while (sString[iCurrIdx] != MENU_END) {
-		iCurrIdx++;
+		if (sString[iCurrIdx] == COMMA) iCurrIdx++;
 		if (sString[iCurrIdx] == MENU_START)
 		{
 			CMyMenu* c_new_menu = createMenu(sString, iCurrIdx);
@@ -74,12 +72,13 @@ void createChildren(string sString, int iCurrIdx, CMyMenu* cMother)
 CMenuItem* cCreateFromString(string sString)
 {
 	CMenuItem* c_new_Item;
+	int p= 0;
 	if(sString[0]==MENU_START)
 	{
-		c_new_Item = createMenu(sString, 0);
+		c_new_Item = createMenu(sString, p);
 	}else
 	{
-		c_new_Item = createCommand(sString, 0);
+		c_new_Item = createCommand(sString, p);
 	}
 
 	return c_new_Item;
