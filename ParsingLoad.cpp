@@ -72,13 +72,13 @@ void createChildren(string sString, int& iCurrIdx, CMyMenu* cMother)
 CMenuItem* cCreateFromString(string sString)
 {
 	CMenuItem* c_new_Item;
-	int p= 0;
+	int i_index= 0;
 	if(sString[0]==MENU_START)
 	{
-		c_new_Item = createMenu(sString, p);
+		c_new_Item = createMenu(sString, i_index);
 	}else
 	{
-		c_new_Item = createCommand(sString, p);
+		c_new_Item = createCommand(sString, i_index);
 	}
 
 	return c_new_Item;

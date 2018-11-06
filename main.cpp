@@ -24,6 +24,13 @@ int main()
 		cout << endl << endl << "Goodbye!" << endl << endl;
 	}
 
+	/*
+	ofstream out("save.txt");
+	out << s_string;
+	out.close();
+	system("pause");
+	 */
+
 	system("pause");
 	
 	return 0;
