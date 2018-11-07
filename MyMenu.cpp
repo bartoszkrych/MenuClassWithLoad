@@ -7,7 +7,6 @@ const string DEFAULT_COMMAND = "defcom";
 
 void CMyMenu::vAddItem(CMenuItem* newItem)
 {
-	newItem->vSetPath(s_path+s_command+"/");
 	newItem->vSetRoot(this);
 	v_menu_items.push_back(newItem);
 	i_size++;
@@ -104,16 +103,6 @@ string CMyMenu::getCommand()
 	return s_command;
 }
 
-void CMyMenu::vSetPath(std::string SPath)
-{
-	s_path = SPath;
-}
-
-string CMyMenu::sGetPath()
-{
-	return s_path  + s_command;
-}
-
 std::string CMyMenu::sGetHelp()
 {
 	return "It's just a menu";
@@ -132,27 +121,51 @@ CMenuItem* CMyMenu::cGetRoot()
 void CMyMenu::vSearchCommand(std::string sCommand)
 {
 	CMenuItem * root_ofTree = cGetRootOfTree();
-	string s_s = "No command";
-	cout << root_ofTree->sGetPathSearch(sCommand, s_s) << endl;
+	CMenuItem * c_item = root_ofTree->cSearchObject(sCommand, NULL);
+
+	if(c_item !=NULL)
+	{
+		CMenuItem * mother = c_item->cGetRoot();
+		if (mother != NULL)
+		{
+
+			CMenuItem * kid = this;
+			string s_path = sCommand;
+			while (mother != NULL)
+			{
+				s_path = mother->getCommand() + "/" + s_path;
+				kid = mother;
+				mother = mother->cGetRoot();
+			}
+			cout << s_path <<endl;
+		}else
+		{
+			cout << sCommand << endl;
+		}
+	}
+	else
+	{
+		cout << "No command."<<endl;
+	}
 	system("pause");
 }
 
-string CMyMenu::sGetPathSearch(string sCommand, string s_s)
+CMenuItem* CMyMenu::cSearchObject(string sCommand, CMenuItem* cMenu)
 {
 	for (int i = 0; i < v_menu_items.size(); i++)
 	{
-		if (s_s != "No command") return s_s;
-		if (v_menu_items[i]->getCommand() != sCommand)
+		if (sCommand == s_command) return this;
+		if (cMenu != NULL) i = v_menu_items.size();
+		else if (v_menu_items[i]->getCommand() != sCommand)
 		{
-			s_s = v_menu_items[i]->sGetPathSearch(sCommand, s_s);
+			cMenu =v_menu_items[i]->cSearchObject(sCommand,cMenu);
 		}
 		else
 		{
-			s_s = v_menu_items[i]->sGetPath();
+			cMenu=v_menu_items[i];
 		}
-
 	}
-	return s_s;
+	return cMenu;
 }
 
 CMyMenu::CMyMenu()
@@ -160,7 +173,6 @@ CMyMenu::CMyMenu()
 	s_name = DEFAULT_NAME;
 	s_command = DEFAULT_COMMAND;
 	i_size = 0;
-	s_path = "";
 	c_root = NULL;
 }
 
@@ -169,7 +181,6 @@ CMyMenu::CMyMenu(string sName, string sCommand)
 	s_name = sName;
 	s_command = sCommand;
 	i_size = 0;
-	s_path = "";
 	c_root = NULL;
 }
 

@@ -28,16 +28,6 @@ std::string CMenuCommand::getCommand()
 	return s_command;
 }
 
-void CMenuCommand::vSetPath(std::string SPath)
-{
-	s_path = SPath;
-}
-
-std::string CMenuCommand::sGetPath()
-{
-	return s_path + s_command;
-}
-
 void CMenuCommand::vSetHelp(std::string sHelp)
 {
 	s_help = sHelp;
@@ -58,14 +48,9 @@ CMenuItem* CMenuCommand::cGetRoot()
 	return c_root;
 }
 
-void CMenuCommand::vSearchCommand(std::string sCommand)
+CMenuItem* CMenuCommand::cSearchObject(std::string sCommand, CMenuItem* cMenu)
 {
-	std::cout << "Somthing wrong" << s_command;
-}
-
-std::string CMenuCommand::sGetPathSearch(std::string sCommand, std::string s_s)
-{
-	return "No command";
+	return NULL;
 }
 
 CMenuCommand::CMenuCommand()
