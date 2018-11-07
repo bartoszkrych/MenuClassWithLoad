@@ -168,6 +168,49 @@ CMenuItem* CMyMenu::cSearchObject(string sCommand, CMenuItem* cMenu)
 	return cMenu;
 }
 
+void CMyMenu::vShowMenu()
+{
+	vector <int> vi_level(0);
+	vector <string> vs_command(0);
+
+	vHelperShow(&vi_level, &vs_command, 0);
+
+	int i_max = vi_level[0];
+
+	for(int i = 0; i < vi_level.size();i++)
+	{
+		if (vi_level[i] > i_max) i_max = vi_level[i];
+	}
+
+	for(int i = 0; i<=i_max; i++)
+	{
+		cout << "[" << i << "] ";
+		for(int j = 0; j < vs_command.size();j++)
+		{
+			if(vi_level[j]==i)
+			{
+				cout << vs_command[j]<<" ";
+			}
+		}
+		cout << endl;
+	}
+
+	system("pause");
+}
+
+void CMyMenu::vHelperShow(vector<int>* viLevel, vector<string>* vsCommand, int iLevel)
+{
+	viLevel->push_back(iLevel);
+	vsCommand->push_back(s_command);
+
+	for(int i = 0; i<v_menu_items.size();i++)
+	{
+		v_menu_items[i]->vHelperShow(viLevel, vsCommand, iLevel + 1);
+	}
+
+}
+
+
 CMyMenu::CMyMenu()
 {
 	s_name = DEFAULT_NAME;

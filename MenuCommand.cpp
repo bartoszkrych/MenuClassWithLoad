@@ -53,6 +53,16 @@ CMenuItem* CMenuCommand::cSearchObject(std::string sCommand, CMenuItem* cMenu)
 	return NULL;
 }
 
+void CMenuCommand::vShowMenu()
+{
+}
+
+void CMenuCommand::vHelperShow(std::vector<int>* viLevel, std::vector<std::string>* vsCommand, int iLevel)
+{
+	viLevel->push_back(iLevel);
+	vsCommand->push_back(s_command);
+}
+
 CMenuCommand::CMenuCommand()
 {
 	s_name = DEFAULT_NAME;

@@ -1,3 +1,17 @@
 ﻿D:\Program Files\Microsoft Visual Studio\2017\Professional\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: Katalog pośredni (Debug\) zawiera pliki udostępnione z innego projektu (MenuClass.vcxproj). Może to spowodować niepoprawne zachowanie podczas oczyszczania i ponownej kompilacji.
   MenuCommand.cpp
+  MyMenu.cpp
+d:\pwr\c++\projects\menuclasswithload\menuclasswithload\mymenu.cpp(155): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+d:\pwr\c++\projects\menuclasswithload\menuclasswithload\mymenu.cpp(180): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+d:\pwr\c++\projects\menuclasswithload\menuclasswithload\mymenu.cpp(188): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+d:\pwr\c++\projects\menuclasswithload\menuclasswithload\mymenu.cpp(206): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+d:\pwr\c++\projects\menuclasswithload\menuclasswithload\mymenu.cpp(233): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+d:\pwr\c++\projects\menuclasswithload\menuclasswithload\mymenu.cpp(266): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+  ParsingLoad.cpp
+d:\pwr\c++\projects\menuclasswithload\menuclasswithload\parsingload.cpp(102): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+d:\pwr\c++\projects\menuclasswithload\menuclasswithload\parsingload.cpp(105): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+d:\pwr\c++\projects\menuclasswithload\menuclasswithload\parsingload.cpp(298): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+d:\pwr\c++\projects\menuclasswithload\menuclasswithload\parsingload.cpp(330): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+  main.cpp
+  Generowanie kodu...
   MenuClass.vcxproj -> D:\PWr\C++\Projects\MenuClassWithLoad\Debug\MenuClassWithLoad.exe

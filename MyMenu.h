@@ -21,6 +21,8 @@ public:
 	void vSetRoot(CMenuItem* cRoot) override;
 	CMenuItem* cGetRoot() override;
 	CMenuItem* cSearchObject(string sCommand, CMenuItem* cMenu) override;
+	void vShowMenu() override;
+	void vHelperShow(vector <int>* viLevel, vector<string>* vsCommand, int iLevel) override;
 
 	CMyMenu();
 	CMyMenu(string sName, string sCommand);

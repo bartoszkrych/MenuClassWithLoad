@@ -19,6 +19,8 @@ int main()
 
 		system("cls");
 
+		main->vShowMenu();
+
 		delete main;
 
 		cout << endl << endl << "Goodbye!" << endl << endl;
